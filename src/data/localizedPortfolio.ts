@@ -919,8 +919,8 @@ const localizedContent: Record<Language, PortfolioContent> = {
         },
         {
           title: 'Phone',
-          value: '+998 94 314 26 04',
-          href: 'tel:+998943142604',
+          value: '+998 94 199 26 04',
+          href: 'tel:+998941992604',
           icon: Phone,
           tone: 'green',
         },

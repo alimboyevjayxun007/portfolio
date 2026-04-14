@@ -287,7 +287,7 @@ function ContactSection({ content }: ContactSectionProps) {
                 </a>
                 <span className="hidden text-gray-300 sm:inline">|</span>
                 <a
-                  href="tel:+998943142604"
+                  href="tel:+998941992604"
                   className="text-sm font-medium text-primary-600 hover:text-primary-700"
                 >
                   {content.directLinks.call}
