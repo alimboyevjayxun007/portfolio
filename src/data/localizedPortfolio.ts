@@ -300,7 +300,7 @@ const localizedContent: Record<Language, PortfolioContent> = {
         {
           title: 'Backend va API Engineering',
           summary:
-            'Production darajadagi servislar, queue lar va API qatlamlari bilan ishlash uchun ishlatadigan asosiy backend stackim.',
+            'Production darajadagi servislar, CRM va CMS workflowlari, queue lar va payment-connected API qatlamlari bilan ishlash uchun ishlatadigan asosiy backend stackim.',
           skills: [
             'Node.js',
             'NestJS',
@@ -309,6 +309,9 @@ const localizedContent: Record<Language, PortfolioContent> = {
             'Django',
             'REST API',
             'RabbitMQ',
+            'CRM systems',
+            'CMS systems',
+            'Payme integration',
           ],
           icon: Code,
         },
@@ -328,13 +331,16 @@ const localizedContent: Record<Language, PortfolioContent> = {
           icon: Database,
         },
         {
-          title: 'AI, Vision va Fine-tuning',
+          title: 'AI, Vision, Camera Streams',
           summary:
-            'Maqsadga yo‘naltirilgan modellar yaratish, dataset yig‘ish va mavjud modellarni aniq vazifaga moslab fine-tune qilish bo‘yicha amaliy ishlar.',
+            'Maqsadga yo‘naltirilgan modellar yaratish, dataset yig‘ish, kameradan oqim olish va mavjud modellarni aniq vazifaga moslab fine-tune qilish bo‘yicha amaliy ishlar.',
           skills: [
             'Python',
             'PyTorch',
             'OpenCV',
+            'FastAPI services',
+            'RTSP streams',
+            'Real-time video',
             'LoRA',
             'QLoRA',
             'Dataset curation',
@@ -345,14 +351,16 @@ const localizedContent: Record<Language, PortfolioContent> = {
         {
           title: 'Infrastructure, Networking va Delivery',
           summary:
-            'Deployment, server, container, networking va payment-connected muhitlarni production darajada barqaror ishlatish uchun kerak bo‘ladigan qatlamlar.',
+            'Deployment, server, container, networking, VPN va kamera-connected muhitlarni production darajada barqaror ishlatish uchun kerak bo‘ladigan qatlamlar.',
           skills: [
             'Docker',
             'Linux',
             'Nginx',
             'MikroTik',
-            'Payme',
-            'Paynet',
+            'VPN networks',
+            'TCP/IP',
+            'DHCP',
+            'Paynet integration',
             'Monitoring support',
           ],
           icon: Server,
@@ -362,19 +370,19 @@ const localizedContent: Record<Language, PortfolioContent> = {
         {
           title: 'Backend Systems',
           description:
-            'Node.js, NestJS, Express.js, FastAPI, Django va queue asosidagi servislarni real ish jarayoniga moslab qurish va ulash.',
+            'Node.js, NestJS, Express.js va queue asosidagi servislarni CRM, CMS va payment integration workflowlari bilan real ish jarayoniga moslab qurish va ulash.',
           icon: Code,
         },
         {
-          title: 'Applied AI va Data Workflows',
+          title: 'Applied AI, Cameras va Data',
           description:
-            'Dataset yig‘ish, katta data bilan ishlash, PyTorch asosida fine-tuning qilish va aniq vazifa uchun model tayyorlash.',
+            'Dataset yig‘ish, kamera streamlaridan foydalanish, FastAPI va OpenCV bilan real-time data pipeline qurish hamda PyTorch asosida aniq vazifa uchun model tayyorlash.',
           icon: Database,
         },
         {
           title: 'Infrastructure va Operational Delivery',
           description:
-            'Docker, Linux, routing, reverse proxy, monitoring va tarmoq qatlamlari bilan production muhitni barqaror ushlash.',
+            'Docker, Linux, routing, reverse proxy, MikroTik, VPN, TCP va DHCP kabi tarmoq qatlamlari bilan production muhitni barqaror ushlash.',
           icon: Server,
         },
       ],
@@ -426,6 +434,73 @@ const localizedContent: Record<Language, PortfolioContent> = {
             'Paynet',
             'Deployment setup',
             'Operations support',
+          ],
+        },
+        {
+          eyebrow: 'Sotuv va boshqaruv mahsuloti',
+          name: 'A1Sale / CMS + Payme',
+          role: 'Node.js & NestJS Backend Engineer',
+          deliveryType: 'Product delivery',
+          summary:
+            'A1Sale tizimi uchun CMS, CRM va Payme integratsiyasini ishlab chiqishga qaratilgan backend portfolio case.',
+          programScope: [
+            'Node.js va NestJS asosida boshqaruv, kontent va savdo jarayonlari uchun CMS qatlamini ishlab chiqish.',
+            'Savdo va mijozlar bilan ishlash oqimlari uchun CRM workflowlarini backend darajasida qo‘llab-quvvatlash.',
+            'Payme orqali to‘lov oqimlarini tizim ichidagi buyurtma va boshqaruv logikasi bilan bog‘lash.',
+          ],
+          responsibilities: [
+            'NestJS va Node.js asosida modulli backend structure, servislar va API qatlamlarini yozish.',
+            'CMS uchun boshqaruv paneli ehtiyojlariga mos business logic va data flowlarni ishlab chiqish.',
+            'Payme integratsiyasi hamda CRM va CMS modullari orasidagi ma’lumot almashinuvini barqaror qilish.',
+          ],
+          impact: [
+            'A1Sale ichida boshqaruv, savdo va to‘lov bilan bog‘liq oqimlarni bitta backend architecture ostida ishlashiga yordam berdi.',
+            'CMS va CRM uchun takrorlanadigan operatsiyalarni aniq servis qatlamlariga ajratib mahsulotni boshqarishni soddalashtirdi.',
+            'Payme bilan ishlovchi tijoriy oqimni production foydalanishga yaqinlashtirdi.',
+          ],
+          stack: [
+            'Node.js',
+            'NestJS',
+            'CMS',
+            'CRM',
+            'Payme',
+            'REST API',
+            'Backend architecture',
+          ],
+        },
+        {
+          eyebrow: 'Applied AI va vision pipeline',
+          name: 'AIKengash.uz / Real-time Camera AI',
+          role: 'Python & FastAPI AI Engineer',
+          deliveryType: 'Applied AI delivery',
+          summary:
+            'Python va FastAPI asosida kamera oqimlari, real-time data va fine-tuned AI modellari bilan ishlangan applied AI case.',
+          programScope: [
+            'VPN orqali ulanadigan kamera va edge qurilmalar bilan ishlash, streamlarni olish va nazorat qilish.',
+            'RTSP, TCP va DHCP bilan bog‘liq tarmoq sharoitlarida kameradan tasvir olib, real-time data oqimini AI pipelinega uzatish.',
+            'Dataset yig‘ish, tayyorlash va aniq vazifa uchun modelni fine-tune qilish orqali task-specific AI workflow yaratish.',
+          ],
+          responsibilities: [
+            'Python va FastAPI asosida camera stream ingestion, servis qatlamlari va real-time frame processing pipeline larini qurish.',
+            'OpenCV yordamida kameradan tasvir olish, RTSP streamlar bilan ishlash va oqimdan foydali data ajratish.',
+            'VPN tarmoqlarda kamera connectivity, DHCP va TCP bilan bog‘liq tarmoq holatlari hamda servis integratsiyasini qo‘llab-quvvatlash.',
+          ],
+          impact: [
+            'Kamera, tarmoq va AI qatlamlarini birlashtirib real-time analiz uchun ishlaydigan workflow yaratishga yordam berdi.',
+            'Dataset yig‘ish va fine-tuning orqali aynan vazifaga moslashtirilgan AI model tayyorlashni tezlashtirdi.',
+            'Real-time video data ni amaliy kuzatuv va tahlil pipeline lariga ulash imkonini berdi.',
+          ],
+          stack: [
+            'Python',
+            'FastAPI',
+            'OpenCV',
+            'RTSP',
+            'TCP/IP',
+            'DHCP',
+            'VPN',
+            'Real-time video',
+            'PyTorch',
+            'Fine-tuning',
           ],
         },
         {
@@ -502,13 +577,27 @@ const localizedContent: Record<Language, PortfolioContent> = {
           ],
         },
         {
+          title: 'Node.js & NestJS Backend Engineer',
+          organization: 'A1Sale',
+          period: 'CMS + payment delivery',
+          description:
+            'A1Sale mahsuloti uchun CMS, CRM va Payme integratsiyasini ishlab chiqishga qaratilgan backend rol bo‘lib, mahsulotning ichki boshqaruv va tijoriy oqimlarini ulashga fokus qilingan.',
+          achievements: [
+            'Node.js va NestJS bilan CMS uchun modulli backend servislar va API qatlamlarini yozish.',
+            'CRM workflowlari va ichki boshqaruv jarayonlari uchun business logic qatlamlarini ishlab chiqish.',
+            'Payme integratsiyasini mahsulot ichidagi buyurtma va to‘lov oqimlari bilan bog‘lash.',
+          ],
+        },
+        {
           title: 'Backend, Data & Applied AI Engineering',
           organization: 'AIKengash.uz va applied AI delivery',
           period: 'Backend + AI systems',
           description:
-            'Bu rol backend fundamentaldan ancha kengroq bo‘lib, Node.js ekotizimi, Python asosidagi AI workflowlar, dataset tayyorlash va katta data bilan ishlashni birlashtirgan amaliy tajribani ifodalaydi.',
+            'Bu rol backend fundamentaldan ancha kengroq bo‘lib, Node.js ekotizimi, Python va FastAPI asosidagi AI workflowlar, kamera streamlari, dataset tayyorlash va katta data bilan ishlashni birlashtirgan amaliy tajribani ifodalaydi.',
           achievements: [
             'Node.js, NestJS, Express.js, FastAPI, Django, REST API, PostgreSQL, MongoDB, MySQL, RabbitMQ, Docker va Linux bilan ishlash.',
+            'Kameralar bilan ishlash, RTSP stream olish, TCP va DHCP tarmoqlari bilan ishlash hamda VPN orqali ulanadigan muhitlarda real-time data oqimini qo‘llash.',
+            'Python, FastAPI va OpenCV yordamida kameradan tasvir olib, real-time frame va data bilan ishlaydigan servis qatlamlarini qurish.',
             'Python, PyTorch, OpenCV, LoRA va QLoRA yordamida aniq vazifa uchun AI modellarni fine-tune qilish va moslashtirish.',
             'AIKengash.uz doirasida dataset yig‘ish, katta data bilan ishlash va undan optimal foydalanish bo‘yicha amaliy tajriba orttirish.',
             'NumPy, SciPy, Pandas va Polars orqali ma’lumotlarni tozalash, transform qilish va model tayyorlash pipeline larini qo‘llash.',
@@ -684,7 +773,7 @@ const localizedContent: Record<Language, PortfolioContent> = {
         {
           title: 'Backend and API Engineering',
           summary:
-            'Core backend technologies I use to build service layers, queues, and API-driven production workflows.',
+            'Core backend technologies I use to build service layers, CRM and CMS workflows, queues, and payment-connected production APIs.',
           skills: [
             'Node.js',
             'NestJS',
@@ -693,6 +782,9 @@ const localizedContent: Record<Language, PortfolioContent> = {
             'Django',
             'REST API',
             'RabbitMQ',
+            'CRM systems',
+            'CMS systems',
+            'Payme integration',
           ],
           icon: Code,
         },
@@ -712,13 +804,16 @@ const localizedContent: Record<Language, PortfolioContent> = {
           icon: Database,
         },
         {
-          title: 'AI, Vision and Fine-tuning',
+          title: 'AI, Vision and Camera Streams',
           summary:
-            'Building task-specific models through dataset curation, model adaptation, and applied AI workflows.',
+            'Building task-specific models through dataset curation, camera-stream ingestion, and applied AI workflows.',
           skills: [
             'Python',
             'PyTorch',
             'OpenCV',
+            'FastAPI services',
+            'RTSP streams',
+            'Real-time video',
             'LoRA',
             'QLoRA',
             'Dataset curation',
@@ -729,14 +824,16 @@ const localizedContent: Record<Language, PortfolioContent> = {
         {
           title: 'Infrastructure, Networking and Delivery',
           summary:
-            'The infrastructure and production layers I use to keep delivery stable in real operational environments.',
+            'The infrastructure and production layers I use to keep delivery stable across VPN-connected, camera-connected, and payment-connected environments.',
           skills: [
             'Docker',
             'Linux',
             'Nginx',
             'MikroTik',
-            'Payme',
-            'Paynet',
+            'VPN networks',
+            'TCP/IP',
+            'DHCP',
+            'Paynet integration',
             'Monitoring support',
           ],
           icon: Server,
@@ -746,19 +843,19 @@ const localizedContent: Record<Language, PortfolioContent> = {
         {
           title: 'Backend Systems',
           description:
-            'Building and connecting Node.js, NestJS, Express.js, FastAPI, Django, and queue-based services into real workflows.',
+            'Building and connecting Node.js, NestJS, Express.js, and queue-based services for CRM, CMS, and payment integration workflows.',
           icon: Code,
         },
         {
-          title: 'Applied AI and Data Workflows',
+          title: 'Applied AI, Cameras and Data',
           description:
-            'Collecting datasets, working with large data, and fine-tuning models with PyTorch for concrete operational tasks.',
+            'Collecting datasets, using camera streams, building FastAPI and OpenCV real-time pipelines, and fine-tuning models with PyTorch for concrete tasks.',
           icon: Database,
         },
         {
           title: 'Infrastructure and Operational Delivery',
           description:
-            'Running Docker, Linux, routing, reverse proxy, monitoring, and network layers around production systems.',
+            'Running Docker, Linux, routing, reverse proxy, MikroTik, VPN, TCP, and DHCP layers around production systems.',
           icon: Server,
         },
       ],
@@ -810,6 +907,73 @@ const localizedContent: Record<Language, PortfolioContent> = {
             'Paynet',
             'Deployment setup',
             'Operations support',
+          ],
+        },
+        {
+          eyebrow: 'Sales and operations product',
+          name: 'A1Sale / CMS + Payme',
+          role: 'Node.js & NestJS Backend Engineer',
+          deliveryType: 'Product delivery',
+          summary:
+            'A backend product case focused on building CMS, CRM, and Payme integration flows for the A1Sale system.',
+          programScope: [
+            'Built a CMS layer for internal management, content operations, and sales-related flows with Node.js and NestJS.',
+            'Supported CRM workflows on the backend side for customer and sales operations.',
+            'Connected Payme payment flows to the system order and management logic.',
+          ],
+          responsibilities: [
+            'Implemented modular backend services, APIs, and business logic with NestJS and Node.js.',
+            'Developed data flow and service logic for CMS operations and internal management workflows.',
+            'Integrated Payme and stabilized data exchange between CRM and CMS modules.',
+          ],
+          impact: [
+            'Helped unify management, sales, and payment-related flows under one backend architecture in A1Sale.',
+            'Improved product maintainability by separating CMS and CRM responsibilities into clearer backend services.',
+            'Moved a Payme-connected commercial workflow closer to production readiness.',
+          ],
+          stack: [
+            'Node.js',
+            'NestJS',
+            'CMS',
+            'CRM',
+            'Payme',
+            'REST API',
+            'Backend architecture',
+          ],
+        },
+        {
+          eyebrow: 'Applied AI and vision pipeline',
+          name: 'AIKengash.uz / Real-time Camera AI',
+          role: 'Python & FastAPI AI Engineer',
+          deliveryType: 'Applied AI delivery',
+          summary:
+            'An applied AI case built around Python, FastAPI, camera streams, real-time data, and fine-tuned models for task-specific workflows.',
+          programScope: [
+            'Worked with VPN-connected cameras and edge environments to receive and manage live streams.',
+            'Used RTSP, TCP, and DHCP-related network conditions to ingest camera frames and feed real-time data into AI pipelines.',
+            'Collected and prepared datasets, then fine-tuned models for clearly defined operational tasks.',
+          ],
+          responsibilities: [
+            'Built camera-stream ingestion, service layers, and real-time frame processing pipelines with Python and FastAPI.',
+            'Used OpenCV to receive video from cameras, work with RTSP streams, and extract usable data from live feeds.',
+            'Supported VPN-based camera connectivity, DHCP and TCP network conditions, and service integration around the stream pipeline.',
+          ],
+          impact: [
+            'Helped combine cameras, networking, and AI layers into a working real-time analysis workflow.',
+            'Accelerated task-specific model delivery through dataset collection and targeted fine-tuning.',
+            'Enabled live video data to be used inside practical monitoring and analysis pipelines.',
+          ],
+          stack: [
+            'Python',
+            'FastAPI',
+            'OpenCV',
+            'RTSP',
+            'TCP/IP',
+            'DHCP',
+            'VPN',
+            'Real-time video',
+            'PyTorch',
+            'Fine-tuning',
           ],
         },
         {
@@ -886,13 +1050,27 @@ const localizedContent: Record<Language, PortfolioContent> = {
           ],
         },
         {
+          title: 'Node.js & NestJS Backend Engineer',
+          organization: 'A1Sale',
+          period: 'CMS + payment delivery',
+          description:
+            'A backend role focused on building CMS, CRM, and Payme integration workflows for the A1Sale product, connecting internal management and commercial operations.',
+          achievements: [
+            'Built modular backend services and APIs for CMS workflows with Node.js and NestJS.',
+            'Implemented backend business logic for CRM-oriented sales and management processes.',
+            'Integrated Payme into the order and payment workflow inside the product.',
+          ],
+        },
+        {
           title: 'Backend, Data and Applied AI Engineering',
           organization: 'AIKengash.uz and applied AI delivery',
           period: 'Backend + AI systems',
           description:
-            'This work went far beyond simple backend foundations and grew into a practical stack covering Node.js services, Python-based AI workflows, dataset preparation, and large-scale data handling.',
+            'This work went far beyond simple backend foundations and grew into a practical stack covering Node.js services, Python and FastAPI AI workflows, camera streams, dataset preparation, and large-scale data handling.',
           achievements: [
             'Worked with Node.js, NestJS, Express.js, FastAPI, Django, REST APIs, PostgreSQL, MongoDB, MySQL, RabbitMQ, Docker, and Linux.',
+            'Worked with cameras, RTSP stream ingestion, TCP and DHCP networking, and VPN-connected environments for real-time data usage.',
+            'Built Python, FastAPI, and OpenCV service layers that received images from cameras and processed live frames in real time.',
             'Used Python, PyTorch, OpenCV, LoRA, and QLoRA to fine-tune and adapt task-specific AI models.',
             'Built hands-on experience in AIKengash.uz with dataset collection, large-data handling, and efficient data use for model training.',
             'Used NumPy, SciPy, Pandas, and Polars for cleaning, transforming, and preparing data pipelines for targeted AI tasks.',
@@ -979,4 +1157,3 @@ const localizedContent: Record<Language, PortfolioContent> = {
 export function getPortfolioData(language: Language): PortfolioContent {
   return localizedContent[language];
 }
-
