@@ -21,7 +21,7 @@ interface ContactSectionProps {
 
 const CONTACT_NAME = 'Jayxun Alimboyev';
 const CONTACT_EMAIL = 'alimboyevjayxun007@gmail.com';
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID ?? 'service_rmr5i9a';
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID ?? 'service_wz6u5pj';
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID ?? 'template_9i16kck';
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? 'AkGG0XWlUK4psm4wH';
 
