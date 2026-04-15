@@ -7,11 +7,23 @@ import SectionHeading from './SectionHeading';
 import SocialLinks from './SocialLinks';
 import TiltCard from './TiltCard';
 
-type SubmitStatus = '' | 'success' | 'error';
+type SubmitStatus = '' | 'success' | 'error' | 'fallback';
+
+interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
+}
 
 interface ContactSectionProps {
   content: PortfolioContent['contact'];
 }
+
+const CONTACT_NAME = 'Jayxun Alimboyev';
+const CONTACT_EMAIL = 'alimboyevjayxun007@gmail.com';
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID ?? 'service_rmr5i9a';
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID ?? 'template_9i16kck';
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? 'AkGG0XWlUK4psm4wH';
 
 function getErrorMessage(error: unknown, fallback: string) {
   if (typeof error === 'object' && error !== null) {
@@ -25,6 +37,18 @@ function getErrorMessage(error: unknown, fallback: string) {
   }
 
   return fallback;
+}
+
+function buildMailtoLink(formData: ContactFormData) {
+  const subject = `Portfolio contact from ${formData.name}`;
+  const body = [
+    `Name: ${formData.name}`,
+    `Email: ${formData.email}`,
+    '',
+    formData.message,
+  ].join('\n');
+
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 const toneStyles = {
@@ -54,6 +78,7 @@ function ContactSection({ content }: ContactSectionProps) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('');
+  const [submitDetail, setSubmitDetail] = useState('');
 
   const handleInputChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -70,45 +95,95 @@ function ContactSection({ content }: ContactSectionProps) {
     event.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('');
+    setSubmitDetail('');
+
+    const normalizedFormData: ContactFormData = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      message: formData.message.trim(),
+    };
+
+    if (!normalizedFormData.name) {
+      setSubmitStatus('error');
+      setSubmitDetail(content.form.nameRequired);
+      setIsSubmitting(false);
+      window.setTimeout(() => {
+        setSubmitStatus('');
+        setSubmitDetail('');
+      }, 5000);
+      return;
+    }
+
+    if (!normalizedFormData.email) {
+      setSubmitStatus('error');
+      setSubmitDetail(content.form.emailRequired);
+      setIsSubmitting(false);
+      window.setTimeout(() => {
+        setSubmitStatus('');
+        setSubmitDetail('');
+      }, 5000);
+      return;
+    }
+
+    if (!normalizedFormData.message) {
+      setSubmitStatus('error');
+      setSubmitDetail(content.form.messageRequired);
+      setIsSubmitting(false);
+      window.setTimeout(() => {
+        setSubmitStatus('');
+        setSubmitDetail('');
+      }, 5000);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(normalizedFormData.email)) {
+      setSubmitStatus('error');
+      setSubmitDetail(content.form.emailInvalid);
+      setIsSubmitting(false);
+      window.setTimeout(() => {
+        setSubmitStatus('');
+        setSubmitDetail('');
+      }, 5000);
+      return;
+    }
 
     try {
-      if (!formData.name.trim()) {
-        throw new Error(content.form.nameRequired);
-      }
-
-      if (!formData.email.trim()) {
-        throw new Error(content.form.emailRequired);
-      }
-
-      if (!formData.message.trim()) {
-        throw new Error(content.form.messageRequired);
-      }
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formData.email)) {
-        throw new Error(content.form.emailInvalid);
-      }
-
       await emailjs.send(
-        'service_rmr5i9a',
-        'template_9i16kck',
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_name: 'Jayxun Alimboyev',
-          to_email: 'alimboyevjayxun007@gmail.com',
+          from_name: normalizedFormData.name,
+          from_email: normalizedFormData.email,
+          message: normalizedFormData.message,
+          to_name: CONTACT_NAME,
+          to_email: CONTACT_EMAIL,
         },
-        'AkGG0XWlUK4psm4wH',
+        EMAILJS_PUBLIC_KEY,
       );
 
       setSubmitStatus('success');
+      setSubmitDetail('');
       setFormData({ name: '', email: '', message: '' });
-      window.setTimeout(() => setSubmitStatus(''), 5000);
+      window.setTimeout(() => {
+        setSubmitStatus('');
+        setSubmitDetail('');
+      }, 5000);
     } catch (error) {
-      console.error('Email send error:', getErrorMessage(error, content.form.genericError));
-      setSubmitStatus('error');
-      window.setTimeout(() => setSubmitStatus(''), 7000);
+      const errorMessage = getErrorMessage(error, content.form.genericError);
+
+      console.error('Email send error:', errorMessage);
+
+      if (typeof window !== 'undefined') {
+        window.location.href = buildMailtoLink(normalizedFormData);
+      }
+
+      setSubmitStatus('fallback');
+      setSubmitDetail(errorMessage);
+      window.setTimeout(() => {
+        setSubmitStatus('');
+        setSubmitDetail('');
+      }, 7000);
     } finally {
       setIsSubmitting(false);
     }
@@ -193,8 +268,19 @@ function ContactSection({ content }: ContactSectionProps) {
               <div className="depth-layer-1 mb-6 flex items-center space-x-3 rounded-lg border border-red-200 bg-red-50 p-4">
                 <X className="text-red-600" size={20} />
                 <div>
-                  <p className="font-medium text-red-800">{content.errorTitle}</p>
-                  <p className="mt-1 text-sm text-red-700">{content.errorDescription}</p>
+                  <p className="font-medium text-red-800">{content.validationTitle}</p>
+                  {submitDetail && <p className="mt-1 text-sm text-red-700">{submitDetail}</p>}
+                </div>
+              </div>
+            )}
+
+            {submitStatus === 'fallback' && (
+              <div className="depth-layer-1 mb-6 flex items-center space-x-3 rounded-lg border border-amber-200 bg-amber-50 p-4">
+                <Mail className="text-amber-600" size={20} />
+                <div>
+                  <p className="font-medium text-amber-800">{content.fallbackTitle}</p>
+                  <p className="mt-1 text-sm text-amber-700">{content.fallbackDescription}</p>
+                  {submitDetail && <p className="mt-2 text-xs text-amber-800/80">{submitDetail}</p>}
                 </div>
               </div>
             )}

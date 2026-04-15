@@ -157,8 +157,11 @@ export interface PortfolioContent {
     followLabel: string;
     cardTitle: string;
     successMessage: string;
+    validationTitle: string;
     errorTitle: string;
     errorDescription: string;
+    fallbackTitle: string;
+    fallbackDescription: string;
     form: {
       nameLabel: string;
       emailLabel: string;
@@ -647,8 +650,12 @@ const localizedContent: Record<Language, PortfolioContent> = {
       followLabel: 'Meni kuzatish',
       cardTitle: 'Tezkor xabar',
       successMessage: 'Xabaringiz muvaffaqiyatli yuborildi. Tez orada javob beraman.',
+      validationTitle: 'Formani to‘g‘ri to‘ldiring.',
       errorTitle: 'Xabar yuborilmadi.',
       errorDescription: 'Iltimos, email yoki Telegram orqali to‘g‘ridan-to‘g‘ri bog‘laning.',
+      fallbackTitle: 'Email ilovasi orqali davom eting.',
+      fallbackDescription:
+        'Saytdan to‘g‘ridan-to‘g‘ri yuborish ishlamadi. Xabaringiz tayyor holda email ilovasiga uzatildi.',
       form: {
         nameLabel: 'Ism',
         emailLabel: 'Email',
@@ -1120,8 +1127,12 @@ const localizedContent: Record<Language, PortfolioContent> = {
       followLabel: 'Follow me',
       cardTitle: 'Quick message',
       successMessage: "Your message was sent successfully. I'll get back to you soon.",
+      validationTitle: 'Please complete the form correctly.',
       errorTitle: 'Message delivery failed.',
       errorDescription: 'Please reach out directly by email or Telegram.',
+      fallbackTitle: 'Continue in your email app.',
+      fallbackDescription:
+        "Direct sending from the site failed, so your message was passed to your mail app as a fallback.",
       form: {
         nameLabel: 'Name',
         emailLabel: 'Email',
